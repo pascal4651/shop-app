@@ -136,7 +136,7 @@ export class SidebarComponent implements OnInit {
       checked: false
     },
     {
-      name: "Android",
+      name: "Linux",
       checked: false
     },
     {

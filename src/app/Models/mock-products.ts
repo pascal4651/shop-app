@@ -65,7 +65,7 @@ export const PRODUCTS: Product[] = [
     hdd: "2T",
     ram: 16,
     screensize: 15.6,
-    os: "Android",
+    os: "Linux",
     description: "here has to be description",
     popular: 67
   },
