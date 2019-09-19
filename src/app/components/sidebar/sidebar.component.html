@@ -1,0 +1,163 @@
+<div class="filters-nav p-2">
+  <div class="brand-list">
+    <div
+      class="category-container category"
+      (click)="showBrandListFilters = !showBrandListFilters"
+    >
+      <div
+        class="angle-right-container d-inline-block mr-1"
+        [class.rotated]="showBrandListFilters"
+      >
+        <i class="fas fa-angle-right text-success"></i>
+      </div>
+      <h6 class="text-danger d-inline-block"><u>Brand:</u></h6>
+    </div>
+    <div *ngIf="showBrandListFilters" class="ml-2">
+      <div *ngFor="let brandItem of brandList">
+        <label class="mb-1 pl-1 text-info d-block"
+          ><input
+            type="checkbox"
+            [(ngModel)]="brandItem.checked"
+            (change)="onSetFilter('brand:' + brandItem.name)"
+          />{{ brandItem.name }}</label
+        >
+      </div>
+    </div>
+  </div>
+  <hr />
+  <div class="cpu-list">
+    <div
+      class="category-container category"
+      (click)="showCpuListFilters = !showCpuListFilters"
+    >
+      <div
+        class="angle-right-container d-inline-block mr-1"
+        [class.rotated]="showCpuListFilters"
+      >
+        <i class="fas fa-angle-right text-success"></i>
+      </div>
+      <h6 class="text-danger d-inline-block"><u>CPU:</u></h6>
+    </div>
+    <div *ngIf="showCpuListFilters" class="ml-2">
+      <div *ngFor="let cpuItem of cpuList">
+        <label class="mb-1 pl-1 text-info d-block"
+          ><input
+            type="checkbox"
+            [(ngModel)]="cpuItem.checked"
+            (change)="onSetFilter('cpu:' + cpuItem.name)"
+          />{{ cpuItem.name }}</label
+        >
+      </div>
+    </div>
+  </div>
+  <hr />
+  <div class="gpu-list">
+    <div
+      class="category-container category"
+      (click)="showGpuListFilters = !showGpuListFilters"
+    >
+      <div
+        class="angle-right-container d-inline-block mr-1"
+        [class.rotated]="showGpuListFilters"
+      >
+        <i class="fas fa-angle-right text-success"></i>
+      </div>
+      <h6 class="text-danger d-inline-block"><u>GPU:</u></h6>
+    </div>
+    <div *ngIf="showGpuListFilters" class="ml-2">
+      <div *ngFor="let gpuItem of gpuList">
+        <label class="mb-1 pl-1 text-info d-block"
+          ><input
+            type="checkbox"
+            [(ngModel)]="gpuItem.checked"
+            (change)="onSetFilter('gpu:' + gpuItem.name)"
+          />{{ gpuItem.name }}</label
+        >
+      </div>
+    </div>
+  </div>
+  <hr />
+  <div class="ram-list">
+    <div
+      class="category-container category"
+      (click)="showRamListFilters = !showRamListFilters"
+    >
+      <div
+        class="angle-right-container d-inline-block mr-1"
+        [class.rotated]="showRamListFilters"
+      >
+        <i class="fas fa-angle-right text-success"></i>
+      </div>
+      <h6 class="text-danger d-inline-block"><u>RAM (Gb):</u></h6>
+    </div>
+    <div *ngIf="showRamListFilters" class="ml-2">
+      <div *ngFor="let ramItem of ramList">
+        <label class="mb-1 pl-1 text-info d-block"
+          ><input
+            type="checkbox"
+            [(ngModel)]="ramItem.checked"
+            (change)="onSetFilter('ram:' + ramItem.name)"
+          />{{ ramItem.name }}</label
+        >
+      </div>
+    </div>
+  </div>
+  <hr />
+  <div class="hdd-list">
+    <div class="category-container category" (click)="showHddListFilters = !showHddListFilters">
+      <div class="angle-right-container d-inline-block mr-1" [class.rotated]="showHddListFilters">
+        <i class="fas fa-angle-right text-success"></i>
+      </div>
+      <h6 class="text-danger d-inline-block"><u>HDD:</u></h6>
+    </div>
+    <div *ngIf="showHddListFilters" class="ml-2">
+      <div *ngFor="let hddItem of hddList">
+        <label class="mb-1 pl-1 text-info d-block"><input type="checkbox" [(ngModel)]="hddItem.checked"
+            (change)="onSetFilter('hdd:' + hddItem.name)" />{{ hddItem.name }}</label>
+      </div>
+    </div>
+  </div>
+  <hr />
+  <div class="price-range">
+    <h6 class="text-danger"><u>Price (UAH):</u></h6>
+    <div class="d-block">
+      <small>From:</small>
+    </div>
+    <input type="number" min="0" maxlength="10" [(ngModel)]="priceFrom" />
+    <div class="d-block">
+      <small>To:</small>
+    </div>
+    <input type="number" min="0" maxlength="10" [(ngModel)]="priceTo" />
+    <button class="btn btn-sm btn-success mt-2" (click)="setPriceRange()">
+      Search
+    </button>
+  </div>
+  <hr />
+  <div class="os-list">
+    <div
+      class="category-container category"
+      (click)="showOsListFilters = !showOsListFilters"
+    >
+      <div
+        class="angle-right-container d-inline-block mr-1"
+        [class.rotated]="showOsListFilters"
+      >
+        <i class="fas fa-angle-right text-success"></i>
+      </div>
+      <h6 class="text-danger d-inline-block"><u>OS:</u></h6>
+    </div>
+    <div *ngIf="showOsListFilters" class="ml-2">
+      <div *ngFor="let osItem of osList">
+        <label class="mb-1 text-info d-block"
+          ><input
+            type="checkbox"
+            name="osItem.name"
+            value="osItem.name"
+            [(ngModel)]="osItem.checked"
+            (change)="onSetFilter('os:' + osItem.name)"
+          />{{ osItem.name }}</label
+        >
+      </div>
+    </div>
+  </div>
+</div>

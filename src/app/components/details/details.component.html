@@ -1,0 +1,57 @@
+<div class="container pt-5">
+  <div class="top-row row">
+    <div class="image-container col-md-6">
+      <img
+        class="card-img-left"
+        src="./../../../assets/2xm46pa.png"
+        alt="Card image"
+      />
+    </div>
+    <div class="product-details-main col-md-6 pl-5">
+      <h2 class="text-primary my-2">
+        <u>{{ product.brand }}-{{ product.model }}</u>
+      </h2>
+      <app-ratestars [rate]="product.rate"></app-ratestars>
+      <div class="price-container my-3">
+        <div class="text-danger" *ngIf="product.discount > 0">
+          <div class="d-block">
+            <small>Discount: {{ product.discount }}%</small>
+          </div>
+          <h3>
+            {{
+              product.price - (product.price * product.discount) / 100
+                | currency: "UAH":"symbol-narrow"
+            }}
+          </h3>
+        </div>
+        <div
+          [ngStyle]="{
+            color: product.discount > 0 ? 'gray' : 'darkgreen',
+            'text-decoration': product.discount > 0 ? 'line-through' : 'none',
+            'font-weight': product.discount > 0 ? 'none' : 'bold'
+          }"
+        >
+          {{ product.price | currency: "UAH":"symbol-narrow" }}
+        </div>
+        <hr />
+        <div class="puchase-nav">
+          <a routerLink="/login/{{ product.id }}" class="btn btn-success"
+            >Buy</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="buttom-row">
+    <div class="font-weight-lighter features-container">
+      <h6>
+        {{ product.cpu }} / {{ product.gpu }} / {{ product.ram }}Gb /
+        {{ product.hdd }} / {{ product.screensize }}" / {{ product.os }}
+      </h6>
+      <br />
+      <h6><u>Description:</u></h6>
+      <p>{{ product.description }}</p>
+    </div>
+  </div>
+</div>

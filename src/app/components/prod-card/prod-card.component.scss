@@ -1,0 +1,20 @@
+.card {
+  width: 250px;
+  height: 400px;
+
+  &:hover {
+    box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+  }
+
+  .price-container {
+    height: 70px;
+  }
+
+  .features-container {
+    height: 60px;
+  }
+
+  .btn {
+    width: 100px;
+  }
+}

@@ -1,0 +1,25 @@
+$color: rgb(252, 247, 240);
+
+.filters-nav {
+  background-color: $color;
+  width: 230px;
+}
+
+.category,
+label {
+  &:hover {
+    background: darken($color, 5%);
+    border-bottom: 1px solid lightgray;
+    border-radius: 10px;
+    cursor: default;
+  }
+}
+
+.rotated {
+  transition: 0.3s;
+  -webkit-transform: rotate(90deg); /* Safari and Chrome */
+  -moz-transform: rotate(90deg); /* Firefox */
+  -ms-transform: rotate(90deg); /* IE 9 */
+  -o-transform: rotate(90deg); /* Opera */
+  transform: rotate(90deg);
+}

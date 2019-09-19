@@ -1,0 +1,43 @@
+<div class="card my-1">
+  <img
+    class="card-img-top"
+    src="./../../../assets/2xm46pa.png"
+    alt="Card image"
+  />
+  <div class="card-body">
+    <h6 class="text-primary">
+      <u>{{ product.brand }}-{{ product.model }}</u>
+    </h6>
+    <div class="price-container">
+      <div class="text-danger" *ngIf="product.discount > 0">
+        <div class="d-block">
+          <small>Discount: {{ product.discount }}%</small>
+        </div>
+        <strong>{{
+          product.price - (product.price * product.discount) / 100
+            | currency: "UAH":"symbol-narrow"
+        }}</strong>
+      </div>
+      <div
+        [ngStyle]="{
+          color: product.discount > 0 ? 'gray' : 'darkgreen',
+          'text-decoration': product.discount > 0 ? 'line-through' : 'none',
+          'font-weight': product.discount > 0 ? 'none' : 'bold'
+        }"
+      >
+        {{ product.price | currency: "UAH":"symbol-narrow" }}
+      </div>
+    </div>
+
+    <app-ratestars [rate]="product.rate"></app-ratestars>
+    <div class="font-weight-lighter features-container">
+      <small
+        >{{ product.cpu }} / {{ product.gpu }} / {{ product.ram }}Gb /
+        {{ product.hdd }} / {{ product.screensize }}" / {{ product.os }}
+      </small>
+    </div>
+    <a routerLink="/login/{{ product.id }}" class="btn btn-success btn-sm"
+      >Buy</a
+    >
+  </div>
+</div>

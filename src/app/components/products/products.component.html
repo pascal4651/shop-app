@@ -1,0 +1,98 @@
+<div class="sort-nav-top d-flex justify-content-between p-1">
+  <div class="filter-group">
+    <div class="filter-buttons">
+      <button
+        type="button"
+        class="btn btn-sm btn-outline-secondary m-1"
+        *ngFor="let filter of filtersBrand"
+        (click)="deleteFilter(filter)"
+      >
+        {{ filter.split(":")[1] }} <i class="fas fa-times-circle"></i>
+      </button>
+      <button
+        class="btn btn-sm btn-outline-secondary m-1"
+        *ngFor="let filter of filtersCpu"
+        (click)="deleteFilter(filter)"
+      >
+        {{ filter.split(":")[1] }} <i class="fas fa-times-circle"></i>
+      </button>
+      <button
+        class="btn btn-sm btn-outline-secondary m-1"
+        *ngFor="let filter of filtersRam"
+        (click)="deleteFilter(filter)"
+      >
+        {{ filter.split(":")[1] }}Gb <i class="fas fa-times-circle"></i>
+      </button>
+      <button
+        class="btn btn-sm btn-outline-secondary m-1"
+        *ngFor="let filter of filtersPrice"
+        (click)="deleteFilter(filter)"
+      >
+        {{ filter.split(":")[1] }}UAH <i class="fas fa-times-circle"></i>
+      </button>
+      <button
+        type="button"
+        class="btn btn-sm btn-outline-secondary m-1"
+        *ngFor="let filter of filtersGpu"
+        (click)="deleteFilter(filter)"
+      >
+        {{ filter.split(":")[1] }} <i class="fas fa-times-circle"></i>
+      </button>
+      <button
+        type="button"
+        class="btn btn-sm btn-outline-secondary m-1"
+        *ngFor="let filter of filtersOs"
+        (click)="deleteFilter(filter)"
+      >
+        {{ filter.split(":")[1] }} <i class="fas fa-times-circle"></i>
+      </button>
+      <button
+        type="button"
+        class="btn btn-sm btn-outline-secondary m-1"
+        *ngFor="let filter of filtersHdd"
+        (click)="deleteFilter(filter)"
+      >
+        {{ filter.split(":")[1] }} <i class="fas fa-times-circle"></i>
+      </button>
+      <button
+        class="btn btn-sm btn-outline-secondary m-1"
+        *ngIf="
+          filtersBrand.length > 0 ||
+          filtersCpu.length > 0 ||
+          filtersRam.length > 0 ||
+          filtersGpu.length > 0 ||
+          filtersOs.length > 0 ||
+          filtersHdd.length > 0 ||
+          filtersPrice.length > 0
+        "
+        (click)="clearAllFilters()"
+      >
+        Clear Filters <i class="fas fa-times-circle"></i>
+      </button>
+      <div class="selected-items-count d-inline-block">
+        <h6>{{ selectedProducts }} item(s) from {{ totalProducts }}</h6>
+      </div>
+    </div>
+  </div>
+  <div class="sort-group">
+    <select
+      (change)="sortProducts($event.target.value)"
+      [(ngModel)]="sortType"
+      class="align-middle"
+    >
+      <option *ngFor="let sortType of sortOptions">{{ sortType }}</option>
+    </select>
+  </div>
+</div>
+<div class="card-group py-1">
+  <app-prod-card
+    *ngFor="
+      let product of products | paginate: { itemsPerPage: 8, currentPage: p }
+    "
+    [product]="product"
+    routerLink="/details/{{ product.id }}"
+  ></app-prod-card>
+</div>
+<div class="pagination-container pt-2 text-center">
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div>
